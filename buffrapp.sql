@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-08-2019 a las 22:53:24
+-- Tiempo de generación: 04-08-2019 a las 23:08:45
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.1.10
 
@@ -29,12 +29,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `administrador` (
-  `Nombre` text COLLATE utf8_spanish2_ci NOT NULL COMMENT 'NOMBRE DEL ADMINISTRADOR',
-  `Apellido` text COLLATE utf8_spanish2_ci NOT NULL COMMENT 'APELLIDO DEL ADMINISTRADOR',
-  `E-mail` text COLLATE utf8_spanish2_ci COMMENT 'E-MAIL DEL ADMINISTRADOR',
+  `Nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL COMMENT 'NOMBRE DEL ADMINISTRADOR',
+  `E-mail` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL COMMENT 'E-MAIL DEL ADMINISTRADOR',
   `Password` varchar(16) COLLATE utf8_spanish2_ci DEFAULT NULL COMMENT 'CONTRASEÑA DEL ADMINISTRADOR PARA INICIAR SESION',
   `DNI` int(9) NOT NULL COMMENT 'DNI DEL ADMINISTRADOR'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci COMMENT='TABALA PARA LOS ADMINISTRADORES';
+
+--
+-- Volcado de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`Nombre`, `E-mail`, `Password`, `DNI`) VALUES
+('Facundo Montero', 'facu@gmail.com', '1234', 12345678);
 
 -- --------------------------------------------------------
 
@@ -74,7 +80,7 @@ CREATE TABLE `pedidos` (
 
 CREATE TABLE `productos` (
   `ID_Producto` int(3) NOT NULL COMMENT 'ID UNICO DEL PRODUCTO',
-  `Nombre` text COLLATE utf8_spanish2_ci NOT NULL COMMENT 'NOMBRE DEL PRODUCTO',
+  `Nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL COMMENT 'NOMBRE DEL PRODUCTO',
   `Precio` float NOT NULL COMMENT 'PRECIO DEL PRODUCTO',
   `Estado` tinyint(1) NOT NULL COMMENT 'ESTADO DEL PRODUCTO'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci COMMENT='TABLA PARA LOS PRODUCTOS';
@@ -100,12 +106,19 @@ CREATE TABLE `reportes` (
 
 CREATE TABLE `usuarios` (
   `DNI` int(9) NOT NULL COMMENT 'DNIDEL USUARIO REGISTRADO',
-  `E-mail` text COLLATE utf8_spanish2_ci COMMENT 'E-MAIL DEL USUARIO REGISTRADO',
+  `E-mail` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL COMMENT 'E-MAIL DEL USUARIO REGISTRADO',
   `Password` varchar(16) COLLATE utf8_spanish2_ci DEFAULT NULL COMMENT 'CONTRASEÑA DEL ALUMNO REGISTRADO',
-  `Nombre` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `Nombre` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Curso` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
   `Division` varchar(5) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci COMMENT='TABLA PARA LOS USUARIOS';
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`DNI`, `E-mail`, `Password`, `Nombre`, `Curso`, `Division`) VALUES
+(42824297, NULL, NULL, 'Edgar Leonel Moyano', '7mo', '1ra');
 
 --
 -- Índices para tablas volcadas
