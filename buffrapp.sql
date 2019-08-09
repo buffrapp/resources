@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-08-2019 a las 20:25:21
+-- Tiempo de generación: 09-08-2019 a las 17:59:40
 -- Versión del servidor: 5.6.13
 -- Versión de PHP: 5.4.17
 
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
   `E-mail` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL COMMENT 'E-MAIL DEL ADMINISTRADOR',
   `Password` varchar(16) COLLATE utf8_spanish2_ci DEFAULT NULL COMMENT 'CONTRASEÑA DEL ADMINISTRADOR PARA INICIAR SESION',
   `DNI` int(9) NOT NULL COMMENT 'DNI DEL ADMINISTRADOR',
+  PRIMARY KEY (`DNI`),
   UNIQUE KEY `DNI` (`DNI`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci COMMENT='TABALA PARA LOS ADMINISTRADORES';
 
@@ -86,7 +87,15 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `FH_Entregado` timestamp NULL DEFAULT NULL,
   `DNI_Cancelado` int(9) DEFAULT NULL,
   PRIMARY KEY (`ID_Pedido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci COMMENT='TABLA PARA LOS PEDIDOS' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci COMMENT='TABLA PARA LOS PEDIDOS' AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`DNI_Usuario`, `ID_Pedido`, `ID_Producto`, `DNI_Administrador`, `FH_Recibido`, `FH_Tomado`, `FH_Listo`, `FH_Entregado`, `DNI_Cancelado`) VALUES
+(42824297, 1, 1, 12345678, '2019-08-09 13:56:05', '2019-08-09 13:58:13', '2019-08-09 13:58:32', '2019-08-09 13:58:48', NULL),
+(42824297, 2, 1, NULL, '2019-08-09 13:59:43', NULL, NULL, NULL, 42824297);
 
 -- --------------------------------------------------------
 
@@ -100,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `Precio` float NOT NULL COMMENT 'PRECIO DEL PRODUCTO',
   `Estado` tinyint(1) NOT NULL COMMENT 'ESTADO DEL PRODUCTO',
   PRIMARY KEY (`ID_Producto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci COMMENT='TABLA PARA LOS PRODUCTOS' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci COMMENT='TABLA PARA LOS PRODUCTOS' AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `productos`
