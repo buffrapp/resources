@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `reportes` (
   `DNI_Usuario` int(9) NOT NULL COMMENT 'DNI DEL USUARIO',
   `DNI_Administrador` int(9) NOT NULL COMMENT 'DNI DEL ADMINISTRADOR',
   `Fecha_Hora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'FECHA HORA DEL REPORTE',
-  PRIMARY KEY (`DNI_U`,`Fecha_Hora`)
+  PRIMARY KEY (`DNI_Usuario`,`Fecha_Hora`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
